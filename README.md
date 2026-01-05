@@ -1,6 +1,6 @@
 # PyMuPDF
 
-**PyMuPDF**, **PDF** (ve diğer) belgelerden veri çıkarılması, analizi, dönüştürülmesi ve işlenmesi için yüksek performanslı bir Python kütüphanesidir / modülüdür.
+**PyMuPDF**, **PDF** (ve diğer)  belgelerden veri çıkarılması, analizi, dönüştürülmesi ve işlenmesi için yüksek performanslı bir Python kütüphanesidir / modülüdür.
 
 **PyMuPDF** [GitHub](https://github.com/pymupdf/PyMuPDF)'da barındırılır ve [PyPI](https://pypi.org/project/PyMuPDF/)'a kayıtlıdır.
 
@@ -12,7 +12,7 @@
 
 1. Gereksinimler
 
-Aşağıdaki örneklerin tümü, bir Python sanal ortamında çalıştığınızı varsaymaktadır. Ayrıntılar için https://docs.python.org/3/library/venv.html adresine bakın. Ayrıca 
+Aşağıdaki örneklerin tümü,  bir Python sanal ortamında çalıştığınızı varsaymaktadır. Ayrıntılar için https://docs.python.org/3/library/venv.html adresine bakın. Ayrıca 
 pip'in güncel olduğunu varsayıyoruz.
 
 Örneğin:
@@ -25,7 +25,7 @@ py -m venv pymupdf-venv
 python -m pip install --upgrade pip
 ```
 
-- **Linux, MacOS**:
+* **Linux, MacOS**:
 
 ```python
 python -m venv pymupdf-venv
@@ -92,7 +92,9 @@ Elbette metin çıkarılabilen dosya biçimi/formatı yalnızca **PDF** değildi
 > 
 > **API referansı**
 > 
-> - `Sayfa.get_text()`
+> * `Sayfa.get_text()`
+
+
 
 ### PDF'den Görüntüleri / Resimleri Çıkarın
 
@@ -126,9 +128,9 @@ for page_index in range(len(doc)): # pdf sayfaları üzerinde gezin
 
 > **NOT:**
 > 
-> Belirli alanlardan nasıl metin çıkarılacağını veya belgelerden tabloların nasıl çıkarılacağını açıklayan daha birçok örnek var. Lütfen [Metin Nasıl Çıkarılır Kılavuzu](tum_belge_netni_nasil_cikarilir.md)'na bakın.
+> Belirli alanlardan nasıl metin çıkarılacağını  veya belgelerden tabloların nasıl çıkarılacağını açıklayan daha birçok örnek var. Lütfen [Metin Nasıl Çıkarılır Kılavuzu](tum_belge_netni_nasil_cikarilir.md)'na bakın.
 > 
-> **API referansı**
+> **API referansı**  
 > 
 > [`Page.get_images()`](https://pymupdf.readthedocs.io/en/latest/page.html#Page.get_images)
 > 
@@ -150,9 +152,25 @@ Bu, sayfada bulunan herhangi bir vektör çizimi için bir yol sözlüğü dönd
 > 
 > Lütfen bakınız: [Çizimler Nasıl Çıkarılır.](https://pymupdf.readthedocs.io/en/latest/recipes-drawing-and-graphics.html#recipesdrawingandgraphics-extract-drawings)
 > 
-> **API referansı**
+> **API referansı**  
 > 
 > [`Page.get_drawings()`](https://pymupdf.readthedocs.io/en/latest/page.html#Page.get_drawings)
+
+### PDF'ten DOCX'e Dönüşüm
+
+PDF'den DOCX formatına belge dönüşümü sağlamak için PyMuPDF'yi kullanan `pdf2docx` kitaplığını kullanırız. Aşağıdaki kod ile kodun çalıştırıldığı dizinde, PDF dosyasının adında bir DOCX dosyası oluşturulur. 
+
+```python
+from pdf2docx import Converter
+
+pdf_dosyasi = input("PDF dosyasının adını (uzantısız) yazın (Ör.:  Dokuman): ")
+docx_dosyasi = pdf_dosyasi + '.docx'
+
+# PDF'i DOCX'e dönüştür
+cv = Converter(pdf_dosyasi + ".pdf")
+cv.convert(docx_dosyasi) # varsayılan olarak tüm sayfaları dönüştür
+cv.close()
+```
 
 ...
 
@@ -164,6 +182,6 @@ devamı gelecek.
 
 ## Kaynak:
 
-- [Installation - PyMuPDF documentation](https://pymupdf.readthedocs.io/en/latest/installation.html)
-  
-- [The Basics - PyMuPDF documentation](https://pymupdf.readthedocs.io/en/latest/the-basics.html)
+* [Installation - PyMuPDF documentation](https://pymupdf.readthedocs.io/en/latest/installation.html)
+
+* [The Basics - PyMuPDF documentation](https://pymupdf.readthedocs.io/en/latest/the-basics.html)
