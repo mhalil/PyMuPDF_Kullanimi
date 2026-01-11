@@ -2,21 +2,7 @@
 
 **PyMuPDF** kütüphanesinin temel işleyişine dair genel teknik bilgileri aşağıda özetliyorum.
 
-• **`import pymupdf`**: Kütüphaneyi projenize dahil etmek için kullanılan ilk komuttur.
-
-• **`doc = pymupdf.open("dosya_adi.pdf")`**: Mevcut bir PDF belgesini okumak veya üzerinde işlem yapmak için açar.
-
-• **`page = doc.load_page(pno)`**: Belgenin belirli bir sayfasına (sayfa numarası üzerinden) erişim sağlar.
-
-• **`text = page.get_text()`**: Seçilen sayfadaki tüm metni ayıklayıp almanıza olanak tanır.
-
-• **`page.get_pixmap()`**: PDF sayfasını bir resim dosyasına (raster görüntü) dönüştürmek için kullanılır.
-
-• **`doc.save("yeni_dosya.pdf")`**: Belge üzerinde yapılan ekleme veya düzenlemeleri kaydeder.
-
-• **`doc.metadata`** özelliği genellikle dosyanın **başlığı, yazarı, oluşturulma tarihi, düzenlenme tarihi ve dosya formatı** gibi bilgileri içeren bir Python sözlüğü (dictionary) döndürür. 
-
-Bir PDF belgesini bir kütüphane kitabı olarak düşünürsek; `get_text` komutu kitabın içindeki sayfaları okumak gibidir, **metadata** özelliği ise kitabın **kapak bilgilerine veya künye sayfasına** bakmak gibidir. Kitabı hiç açmadan yazarının kim olduğunu, ne zaman basıldığını ve adının ne olduğunu bu sayede hemen öğrenebilirsiniz.
+Bir PDF belgesini bir kütüphane kitabı olarak düşünürsek; `get_text` komutu kitabın içindeki sayfaları okumak gibidir,
 
 **Analoji:** PyMuPDF kütüphanesini kullanmak, **akıllı bir büyüteçle kapalı bir kitabı incelemeye** benzer; 
 
@@ -30,57 +16,17 @@ Bir PDF belgesini bir kütüphane kitabı olarak düşünürsek; `get_text` komu
 
 **PyMuPDF** kütüphanesi PDF belgelerini **oluşturmak, düzenlemek ve veri ayıklamak** için kullanılan kapsamlı bir araçtır.
 
-Aşağıda, kaynaklarda belirtilen temel işlevler ve komutlar kategorize edilerek özetlenmiştir:
-
-1. Belge ve Sayfa İşlemleri
-
-• **Açma ve Oluşturma:** `open()` metodu mevcut bir PDF'i açmak veya yeni bir belge nesnesi oluşturmak için kullanılır.
-
-• **Sayfa Yönetimi:** Yeni bir sayfa eklemek için `new_page()` komutu kullanılır
-
-. Sayfaların sırasını değiştirmek için `move_page()`, belirli bir sayfayı kaldırmak için `delete_page()` ve bir sayfayı çoğaltmak için `full_copy_page()` metodları kullanılır.
-
-2. Metin Ayıklama Teknikleri
-
-`get_text()` metodu, kullanılan parametrelere göre farklı detay seviyelerinde veri sunar:
-
-• **Temel Çıktı:** Varsayılan ayarlarda metni tek bir karakter dizisi (string) olarak döndürür.
-
-• **Blok Yapısı:** `blocks` parametresi; metnin konumunu, içeriğini ve blok numarasını içeren bir liste sunar.
-
-• **Detaylı Sözlük (Dict):** `dict` parametresi; yazı tipi, boyutu, rengi ve yazım yönü gibi en detaylı bilgileri içeren bir sözlük yapısı döndürür.
-
-• **Gelişmiş Ayarlar:** Metinlerin doğal okuma sırasına göre dizilmesi için `sort=True` parametresi kullanılabilir. Ayrıca, `clip` parametresi ve bir `rect` (dikdörtgen) nesnesi ile sayfanın sadece belirli bir alanındaki metinler ayıklanabilir.
-
-3. Tablo ve Veri İşleme
-
-• **Tablo Ayıklama:** Sayfadaki tabloları bulmak için `find_tables()` metodu kullanılır.
-
-• **Veri Dönüştürme:** Tablo verileri `extract()` ile Python listesi olarak alınabilir veya doğrudan **pandas** DataFrame'ine dönüştürülmek üzere `to_pandas()` metodu kullanılabilir.
-
 • **Görselleştirme:** Ayıklanan ve temizlenen veriler, analiz edildikten sonra **Matplotlib** gibi kütüphanelerle grafiklere dönüştürülebilir.
 
-4. Görüntü Ayıklama
 
-• **Görüntü Bulma:** Bir sayfadaki görseller `get_page_images()` ile listelenebilir.
-
-• **Ayıklama:** Görselin referans numarası (xref) kullanılarak `extract_image()` metodu ile görüntünün içeriği (ikili formatta), uzantısı ve boyutları elde edilir
-
-. Alternatif olarak, `xref_length()` üzerinden tüm belge taranarak da görüntülere ulaşılabilir.
-
-5. PDF'e İçerik Ekleme
-
-Belgeye metin eklemek için çeşitli yöntemler sunulmaktadır:
-
-• **insert_text()**: Belirli bir koordinata basit metin ekler.
-
-• **insert_htmlbox()**:HTML etiketleri ve CSS kullanarak stil verilmiş metinler, tablolar veya linkler eklemeye olanak tanır.
-
-• **insert_textbox()**: Metni, tanımlanan bir dikdörtgen alan (rect) içine sığdıracak şekilde yerleştirir.
-
-• **write_text()**:`TextWriter` nesneleri aracılığıyla opaklık ve istenilen açıda döndürme (rotation) gibi gelişmiş özelliklerle metin eklenmesini sağlar.
 
 **Özet Analoji:** PyMuPDF kullanımı bir **restoran mutfağını yönetmeye** benzer; `open` ile mutfağa girer, `get_text` veya `find_tables` ile dolaptaki malzemeleri (verileri) istediğiniz detayda seçip çıkarır, `insert_text` veya `move_page` ile tabağı (sayfayı) yeniden düzenler ve en sonunda `save` ile hazırladığınız yemeği (belgeyi) sunuma hazır hale getirirsiniz.
+
+
+
+
+
+BURADA KALDIM
 
 ___
 

@@ -83,8 +83,6 @@ Aşağıdaki dosya türleri desteklenir:
 * PPT / PPTX
 * HWP / HWPX
 
-
-
 ## Kaynak:
 
 * [Opening Files - PyMuPDF documentation](https://pymupdf.readthedocs.io/en/latest/how-to-open-a-file.html#supported-file-types)
